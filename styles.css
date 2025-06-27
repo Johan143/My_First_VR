@@ -1,0 +1,9 @@
+h1 {
+  text-decoration: underline;
+}
+.a-enter-vr-button {
+  left: 50px !important;
+  right: auto !important;
+  bottom: 10px !important;
+  position: absolute !important;
+}

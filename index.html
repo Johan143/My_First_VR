@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>My First VR Project</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+    <script src="https://rawgit.com/fernandojsg/aframe-teleport-controls/master/dist/aframe-teleport-controls.min.js"></script>
+    <script src="script.js"></script>
+    <script src="audiocontrols.js"></script>
+  </head>
+  <body>
+    <a-scene>
+      <a-sky
+        id="sky"
+        src="https://cdn.jsdelivr.net/gh/Johan143/VR-Assets@main/my_sky.jpg"
+      >
+      </a-sky>
+      <a-cylinder
+        id="floor"
+        position="0 0 0"
+        radius="20"
+        color="green"
+        height="0.1"
+      ></a-cylinder>
+      <a-entity id="cameraRig">
+        <a-entity id="head" camera wasd-controls look-controls> </a-entity>
+        <a-entity
+          teleport-controls="cameraRig: #cameraRig; type: parabolic; button: trigger;collisionEntities: #floor"
+          oculus-touch-controls="hand: right"
+        >
+        </a-entity>
+        <a-entity laser-controls="hand:left" line="color: red"></a-entity>
+        <a-camera> </a-camera>
+      </a-entity>
+      <a-box
+        id="front_wall"
+        position="0 1.473 4.907"
+        rotation="0 0 0"
+        scale="10 3 0.2"
+        src="https://cdn.jsdelivr.net/gh/Johan143/VR-Assets@main/red_brick_wall_texture.jpg"
+      >
+      </a-box>
+      <a-box
+        id="back_wall"
+        position="0 1.473 -4.907"
+        rotation="0 0 0"
+        scale="10 3 0.2"
+        src="https://cdn.jsdelivr.net/gh/mahuea07/vr_assests@main/wall-texture-for-kitchen.png"
+      >
+      </a-box>
+      <a-box
+        id="right_wall"
+        position="5.049 1.454 -0.008"
+        rotation="0 -90 0"
+        scale="10 3 0.2"
+        src="https://cdn.jsdelivr.net/gh/Johan143/VR-Assets@main/red_brick_wall_texture.jpg"
+      >
+      </a-box>
+      <a-box
+        id="left_wall"
+        position="-5.049 1.454 -0.008"
+        rotation="0 -90 0"
+        scale="10 3 0.2"
+        src="https://cdn.jsdelivr.net/gh/Johan143/VR-Assets@main/red_brick_wall_texture.jpg"
+      >
+      </a-box>
+      <a-entity
+        id="triangle_front"
+        geometry="primitive: triangle; vertexA: -2.5 0 0; vertexB: 2.5 0 0; vertexC: 0 2.5 0"
+        position="0.160 2.988 4.907"
+        rotation="0 0 0"
+        scale="1.884 1 1"
+        material="src: url(https://cdn.jsdelivr.net/gh/Johan143/VR-Assets@main/red_brick_wall_texture.jpg); repeat: 1 1; side: double;"
+      >
+      </a-entity>
+      <a-entity
+        id="triangle_back"
+        geometry="primitive: triangle; vertexA: -2.5 0 0; vertexB: 2.5 0 0; vertexC: 0 2.5 0"
+        position="0.160 2.988 -4.907"
+        rotation="0 0 0"
+        scale="1.884 1 1"
+        material="src: url(https://cdn.jsdelivr.net/gh/Johan143/VR-Assets@main/red_brick_wall_texture.jpg); repeat: 1 1; side: double;"
+      >
+      </a-entity>
+      <a-box
+        id="roof_left"
+        position="-2.507 4.241 -0.071"
+        rotation="28.433 -90 0"
+        scale="10.931 0.20 6.282"
+        color="silver"
+      >
+      </a-box>
+      <a-box
+        id="roof_right"
+        position="2.684 4.328 0"
+        rotation="28.433 90 0"
+        scale="10.931 0.20 5.959"
+        color="silver"
+      >
+      </a-box>
+
+      <a-plane
+        id="my_first_picture"
+        src="https://cdn.jsdelivr.net/gh/Johan143/VR-Assets@main/johan_running.jpg"
+        scale="1.771 1.643 0.2"
+        rotation="0 0 0"
+        position="0 1.666 -4.763"
+      >
+        <a-box
+          id="frame"
+          position="0 0 0"
+          rotation="0 0 0"
+          scale="1.413 1.650 0.2"
+          src="https://cdn.jsdelivr.net/gh/Johan143/VR-Assets@main/frame.png"
+          material="transparent: true"
+        >
+        </a-box>
+      </a-plane>
+      <!-- Define the 3D object -->
+      <a-assets>
+        <a-asset-item
+          id="myCat"
+          src="https://cdn.jsdelivr.net/gh/Johan143/VR-Assets@main/cat.glb"
+        >
+        </a-asset-item>
+      </a-assets>
+
+      <!-- Use the 3D object -->
+      <a-entity
+        gltf-model="#myCat"
+        position="-2.795 0.030 -3.092"
+        rotation="0 0 0"
+        scale="0.031 0.031 0.031"
+      >
+      </a-entity>
+      <!-- Video Assets -->
+      <a-assets>
+        <!-- Video -->
+        <video
+          id="videoclip"
+          loop
+          src="https://cdn.jsdelivr.net/gh/Johan143/VR-Assets@main/harry_potter.mp4"
+          preload="auto"
+        ></video>
+
+        <!-- Images -->
+        <img
+          id="play"
+          src="https://cdn.jsdelivr.net/gh/Johan143/VR-Assets@main/btnPlay.png"
+          preload="auto"
+        />
+        <img
+          id="pause"
+          src="https://cdn.jsdelivr.net/gh/Johan143/VR-Assets@main/btnPause.png"
+          preload="auto"
+        />
+        <img
+          id="tv_background"
+          src="https://cdn.jsdelivr.net/gh/Johan143/VR-Assets@main/tv_background.jpg"
+          preload="auto"
+        />
+      </a-assets>
+      <!-- TV on Wall -->
+      <a-entity>
+        <a-video
+          src="#videoclip"
+          position="-3.893 1.6 0"
+          rotation="0 90 0"
+          width="2"
+          height="1.125"
+        ></a-video>
+
+        <!-- TV background -->
+        <a-plane
+          id="videoControls"
+          position="-3.893 0.854 0"
+          scale="2 0.386 1.714"
+          rotation="0 90 0"
+          opacity="1"
+          src="#tv_background"
+        >
+          <!-- Play button -->
+          <a-plane
+            id="vidplaybox"
+            src="#play"
+            scale="0.142 0.746 0.746"
+            position="-0.350 0 0.01"
+            shader="flat"
+            transparent="true"
+            videoplayer
+          >
+          </a-plane>
+
+          <!-- Stop button -->
+          <a-plane
+            id="vidpausebox"
+            src="#pause"
+            scale="0.142 0.746 0.746"
+            position="0.350 0 0.01"
+            shader="flat"
+            transparent="true"
+            videopauser
+          >
+          </a-plane>
+        </a-plane>
+      </a-entity>
+      <!-- Close TV on Wall -->
+      <!-- Place the mouse cursor in view -->
+      <a-entity cursor="rayOrigin: mouse"> </a-entity>
+      <!-- ASSETS for the Sound Board-->
+      <a-assets>
+        <!-- Audio -->
+        <audio
+          id="art1Audio"
+          src="https://cdn.jsdelivr.net/gh/Johan143/VR-Assets@main/mySong.mp3"
+          preload="auto"
+        ></audio>
+        <audio
+          id="art2Audio"
+          src="https://cdn.jsdelivr.net/gh/Johan143/VR-Assets@main/Attie.mp3"
+          preload="auto"
+        ></audio>
+
+        <!-- Art images -->
+        <img
+          id="imgArt1"
+          src="https://cdn.jsdelivr.net/gh/Johan143/VR-Assets@main/song1.jpg"
+        />
+        <img
+          id="imgArt2"
+          src="https://cdn.jsdelivr.net/gh/Johan143/VR-Assets@main/attie.jpg"
+        />
+
+        <!-- Play/Pause Buttons -->
+        <img
+          id="imgPlay"
+          src="https://cdn.jsdelivr.net/gh/Johan143/VR-Assets@main/btnPlay.png"
+        />
+        <img
+          id="imgPause"
+          src="https://cdn.jsdelivr.net/gh/Johan143/VR-Assets@main/btnPause.png"
+        />
+      </a-assets>
+      <!-- Panel -->
+      <a-box
+        position="4.948 1.5 -1.103"
+        scale="2 1.5 0.05"
+        rotation="0 -89 0"
+        src="https://cdn.jsdelivr.net/gh/Johan143/VR-Assets@main/tv_background.jpg"
+      >
+        <!-- Track 1 -->
+        <a-plane
+          id="track1"
+          class="clickable"
+          sound="on: playSound; src: #art1Audio"
+          src="#imgArt1"
+          position="-0.312 0.288 1.581"
+          scale="0.25 0.25 0"
+          shader="flat"
+          songselector
+        ></a-plane>
+
+        <!-- Frame 1 (animated pulse) -->
+        <a-plane
+          id="frame1"
+          visible="false"
+          position="-0.312 0.288 1.581"
+          width="0.25"
+          height="0.25"
+          color="#FFD700"
+          transparent="true"
+          shader="flat"
+          animation__pulse="property: opacity; from: 0.3; to: 0.8; dur: 800; dir: alternate; loop: true"
+        ></a-plane>
+
+        <!-- Track 2 -->
+        <a-plane
+          id="track2"
+          class="clickable"
+          sound="on: playSound; src: #art2Audio"
+          src="#imgArt2"
+          position="0.312 0.288 1.581"
+          scale="0.25 0.25 0"
+          shader="flat"
+          songselector
+        ></a-plane>
+
+        <!-- Frame 2 (animated pulse) -->
+        <a-plane
+          id="frame2"
+          visible="false"
+          position="0.312 0.288 1.581"
+          width="0.25"
+          height="0.25"
+          color="#FFD700"
+          transparent="true"
+          shader="flat"
+          animation__pulse="property: opacity; from: 0.3; to: 0.8; dur: 800; dir: alternate; loop: true"
+        ></a-plane>
+
+        <!-- Play Button -->
+        <a-plane
+          id="playbox"
+          class="clickable"
+          src="#imgPlay"
+          position="-0.366 -0.348 0.731"
+          scale="0.15 0.15 0"
+          transparent="true"
+          songplayer
+        ></a-plane>
+
+        <!-- Pause Button -->
+        <a-plane
+          id="stopbox"
+          class="clickable"
+          src="#imgPause"
+          position="0.366 -0.348 0.731"
+          scale="0.15 0.15 0"
+          transparent="true"
+          songstopper
+        ></a-plane>
+      </a-box>
+    </a-scene>
+  </body>
+</html>
